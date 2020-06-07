@@ -1,0 +1,47 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "threejs-dice-typescript": {
+      "projectType": "library",
+      "root": "projects/threejs-dice-typescript",
+      "sourceRoot": "projects/threejs-dice-typescript/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/threejs-dice-typescript/tsconfig.lib.json",
+            "project": "projects/threejs-dice-typescript/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/threejs-dice-typescript/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/threejs-dice-typescript/src/test.ts",
+            "tsConfig": "projects/threejs-dice-typescript/tsconfig.spec.json",
+            "karmaConfig": "projects/threejs-dice-typescript/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/threejs-dice-typescript/tsconfig.lib.json",
+              "projects/threejs-dice-typescript/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "threejs-dice-typescript"
+}
